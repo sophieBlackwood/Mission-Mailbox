@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elder Stahmann | Week 1</title>
+    <style>
+        :root {
+            --bg-color: #f5f2eb;
+            --letter-bg: #ffffff;
+            --text-dark: #3a3530;
+            --text-muted: #706961;
+            --accent: #9ca995;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .letter-container {
+            width: 100%;
+            max-width: 650px;
+            background: var(--letter-bg);
+            padding: 40px 30px;
+            border-radius: 6px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+        }
+
+        /* Back Button */
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            text-decoration: none;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 40px;
+            transition: color 0.2s;
+        }
+
+        .back-link:hover {
+            color: var(--accent);
+        }
+
+        /* Header info */
+        .email-header {
+            border-bottom: 1px solid #eee;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+
+        .email-header h1 {
+            font-size: 1.6rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .email-date {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        /* Email Content */
+        .email-body {
+            line-height: 1.6;
+            font-size: 1rem;
+        }
+
+        .email-body p {
+            margin-bottom: 20px;
+        }
+
+        /* Weekly Photo Spotlight (Optional) */
+        .week-photo {
+            margin-top: 40px;
+            border-top: 1px solid #eee;
+            padding-top: 30px;
+        }
+
+        .week-photo img {
+            width: 100%;
+            max-height: 400px;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+
+        .photo-caption {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            text-align: center;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="letter-container">
+        <a href="index.html" class="back-link">← Back to Mailbox</a>
+
+        <div class="email-header">
+            <h1>Week 1: First Update</h1>
+            <div class="email-date">June 2026</div>
+        </div>
+
+        <div class="email-body">
+            <p>Dear Family and Friends,</p>
+            
+            <p>
+                [Paste the body of Elder Stahmann's first weekly email right here. You can add as many paragraph tags as you need to break up the text so it is easy to read.]
+            </p>
+            
+            <p>
+                [Another paragraph goes here. Talk about the MTC, the food, learning the language, or arriving in his first assigned area.]
+            </p>
+
+            <p>Hope you all have a great week!</p>
+            
+            <p>Love,<br>Elder Stahmann</p>
+        </div>
+
+        <div class="week-photo">
+            <img src="https://via.placeholder.com/600x400" alt="Week 1 Photo">
+            <div class="photo-caption">A snapshot from this week.</div>
+        </div>
+    </div>
+
+</body>
+</html>

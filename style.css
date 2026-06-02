@@ -1,0 +1,259 @@
+:root {
+    --primary-pastel: #f4eae1;
+    --envelope-bg: #e0cfb3;
+    --envelope-inside: #d4c0a1;
+    --letter-bg: #ffffff;
+    --text-color: #5a4a42;
+    --accent-color: #a3b19b; /* Sage green accent */
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+body {
+    background-color: var(--primary-pastel);
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow-x: hidden;
+    padding: 20px;
+}
+
+/* --- ENVELOPE CONTAINER --- */
+.envelope-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    height: 400px;
+    background-color: var(--envelope-bg);
+    border-radius: 0 0 10px 10px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    cursor: pointer;
+    transition: transform 0.5s ease;
+    margin-top: 100px;
+}
+
+/* The Envelope Flap */
+.envelope-wrapper::before {
+    content: '';
+    position: absolute;
+    top: -100px;
+    left: 0;
+    border-left: 300px solid transparent;
+    border-right: 300px solid transparent;
+    border-bottom: 100px solid var(--envelope-bg);
+    transform-origin: bottom;
+    transition: transform 0.5s ease 0.3s, z-index 0s ease 0.3s;
+    z-index: 3;
+}
+
+@media (max-width: 600px) {
+    .envelope-wrapper::before {
+        border-left-width: 50vw;
+        border-right-width: 50vw;
+    }
+}
+
+/* Front pockets of envelope */
+.envelope-front {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 300px solid transparent;
+    border-right: 300px solid transparent;
+    border-bottom: 200px solid var(--envelope-inside);
+    bottom: 0;
+    left: 0;
+    z-index: 2;
+}
+
+@media (max-width: 600px) {
+    .envelope-front {
+        border-left-width: 50vw;
+        border-right-width: 50vw;
+    }
+}
+
+/* Stamp and Address */
+.stamp-label {
+    position: absolute;
+    top: 40px;
+    right: 40px;
+    width: 70px;
+    height: 85px;
+    background: #fff;
+    border: 3px dashed var(--text-color);
+    padding: 5px;
+    font-size: 10px;
+    text-align: center;
+    z-index: 4;
+    transform: rotate(5deg);
+    transition: opacity 0.3s ease;
+}
+
+.address-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    line-height: 1.6;
+    font-size: 1.2rem;
+    font-weight: bold;
+    z-index: 4;
+    transition: opacity 0.3s ease;
+}
+
+.click-hint {
+    font-size: 0.9rem; 
+    font-weight: normal;
+}
+
+/* --- THE LETTER (CONTENT) --- */
+.letter {
+    position: absolute;
+    top: 10px;
+    left: 5%;
+    width: 90%;
+    background: var(--letter-bg);
+    border-radius: 8px;
+    padding: 30px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    transition: transform 0.6s ease 0.5s, z-index 0s linear 0.5s;
+    z-index: 1;
+    height: auto;
+    max-height: 350px;
+    overflow: hidden;
+}
+
+/* --- OPEN STATE ANIMATIONS --- */
+.envelope-wrapper.open {
+    transform: translateY(150px);
+    cursor: default;
+}
+
+.envelope-wrapper.open::before {
+    transform: rotateX(180deg) translateY(200px);
+    z-index: 0;
+}
+
+.envelope-wrapper.open .letter {
+    transform: translateY(-400px);
+    z-index: 5;
+    max-height: none;
+    overflow: visible;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+}
+
+.envelope-wrapper.open .stamp-label,
+.envelope-wrapper.open .address-text {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* --- LETTER CONTENT STYLING --- */
+.letter h1 {
+    text-align: center;
+    margin-bottom: 10px;
+    color: var(--text-color);
+    font-size: 1.6rem;
+}
+
+.letter h2 {
+    text-align: center;
+    font-size: 1rem;
+    margin-bottom: 30px;
+    opacity: 0.8;
+}
+
+.intro-text {
+    line-height: 1.5; 
+    font-size: 0.95rem;
+}
+
+.section-title {
+    margin: 25px 0 15px 0;
+    border-bottom: 2px dashed var(--accent-color);
+    padding-bottom: 5px;
+    font-size: 1.2rem;
+}
+
+/* Email Links Grid */
+.email-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.email-link {
+    display: block;
+    text-align: center;
+    padding: 10px;
+    background: var(--primary-pastel);
+    color: var(--text-color);
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    transition: background 0.2s, transform 0.2s;
+}
+
+.email-link:hover {
+    background: var(--accent-color);
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* Photo Gallery Grid */
+.photo-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.photo-card {
+    background: white;
+    padding: 8px;
+    border: 1px solid #ddd;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    transform: rotate(calc(var(--r, 0) * 1deg));
+    transition: transform 0.3s;
+}
+
+.photo-card:hover {
+    transform: rotate(0deg) scale(1.05);
+    z-index: 10;
+}
+
+.photo-card img {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 2px;
+    background-color: #eee;
+}
+
+.photo-caption {
+    font-size: 0.75rem;
+    text-align: center;
+    margin-top: 8px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.hint {
+    text-align: center;
+    font-size: 0.8rem;
+    margin-top: 15px;
+    font-style: italic;
+    opacity: 0.7;
+}
